@@ -233,7 +233,8 @@ module.exports = function (grunt) {
           '<%%= yeoman.dist %>/scripts/{,*/}*.js',
           '<%%= yeoman.dist %>/styles/{,*/}*.css',
           '<%%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%%= yeoman.dist %>/styles/fonts/*'
+          '<%%= yeoman.dist %>/styles/fonts/*',
+          '<%%= yeoman.dist %>/bower_components/**/fonts/**/*.{eot,svg,ttf,woff}'
         ]
       }
     },
@@ -367,25 +368,15 @@ module.exports = function (grunt) {
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
-            'fonts/*'
+            'fonts/*',
+            'bower_components/**/fonts/**'
           ]
         }, {
           expand: true,
           cwd: '.tmp/images',
           dest: '<%%= yeoman.dist %>/images',
           src: ['generated/*']
-        }<% if (bootstrap) { %>, {
-          expand: true,
-          cwd: '<%%= yeoman.app %><%
-            if (!compassBootstrap) {
-              %>/bower_components/bootstrap/dist<%
-            } %>',
-          src: '<% if (compassBootstrap) {
-              %>bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap<%
-            } else { %>fonts<% }
-            %>/*',
-          dest: '<%%= yeoman.dist %>'
-        }<% } %>]
+        }]
       },
       styles: {
         expand: true,
